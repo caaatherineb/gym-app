@@ -15,6 +15,7 @@ struct ContentView: View {
             
             VStack{
                 Spacer()
+                //FACILITY HOURS ORANGE BOX
                 ZStack{
                     Rectangle()
                         .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
@@ -25,49 +26,30 @@ struct ContentView: View {
                             .font(.title)
                             .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
                             .frame(alignment: .leading)
+                            
                         HStack{
-                            Text("Sun")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                                .frame(alignment: .leading)
-                            Text("   9:00 AM - 5:00 PM")
+                            VStack{
+                                Text("Sun")
+                                Text("Mon")
+                                Text("Tues")
+                                Text("Wed")
+                                Text("Thurs")
+                                Text("Fri")
+                                Text("Sat")
+                            }
+                            let weekdayTime: String = "6:00 AM - 11:00 PM"
+                            let weekendTime: String = "9:00 AM - 9:00 PM"
+                            VStack{
+                                Text(weekendTime)
+                                Text(weekdayTime)
+                                Text(weekdayTime)
+                                Text(weekdayTime)
+                                Text(weekdayTime)
+                                Text(weekdayTime)
+                                Text(weekendTime)
+                            }
                         }
-                        HStack{
-                            Text("Mon")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                                .frame(alignment: .leading)
-                            Text("   9:00 AM - 5:00 PM")
-                        }
-                        HStack{
-                            Text("Tue")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                                .frame(alignment: .leading)
-                            Text("   9:00 AM - 5:00 PM")
-                        }
-                        HStack{
-                            Text("Wed")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                                .frame(alignment: .leading)
-                            Text("   9:00 AM - 5:00 PM")
-                        }
-                        HStack{
-                            Text("Thurs")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                                .frame(alignment: .leading)
-                            Text("   9:00 AM - 5:00 PM")
-                        }
-                        HStack{
-                            Text("Fri")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                                .frame(alignment: .leading)
-                            Text("   9:00 AM - 5:00 PM")
-                        }
-                        HStack{
-                            Text("Sat")
-                                .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                                .frame(alignment: .leading)
-                            Text("   9:00 AM - 5:00 PM")
-                        }
-                        
+                        //.padding(.top)
                     }
                     
                 }
@@ -75,11 +57,126 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 Spacer()
-                Rectangle()
-                    .padding(.bottom, 10.0)
-                    .foregroundColor(Color(red: 0, green: 0.329, blue: 0.604))
-                    .cornerRadius(40)
-                    .ignoresSafeArea()
+                
+                // DARK BLUE BOX WITH BUTTONS
+                ZStack{
+                    Rectangle()
+                        .padding(.bottom, 10.0)
+                        .foregroundColor(Color(red: 0, green: 0.329, blue: 0.604))
+                        .cornerRadius(40)
+                        .ignoresSafeArea()
+                    
+                    VStack{
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
+                                    .cornerRadius(40)
+                                    .frame(width: 145.0, height: 138.0)
+                                VStack{
+                                    Image(systemName: "dumbbell.fill")
+    //                                    .resizable()
+    //                                    .aspectRatio(contentMode: .fit)
+                                    Text("")
+                                    Text("Equipment")
+                                        .font(.title3)
+                                    Text("Information")
+                                        .font(.title3)
+                                }
+                                
+                                    
+                            }
+                                
+                            Spacer()
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
+                                    .cornerRadius(40)
+                                    .frame(width: 145.0, height: 138.0)
+                                VStack{
+                                    Image(systemName: "figure.socialdance")
+                                    Text("")
+                                     Text("Workout")
+                                         .font(.title3)
+                                     Text("Buddy")
+                                         .font(.title3)
+                                }
+                            }
+                            Spacer()
+                        }
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
+                                    .cornerRadius(40)
+                                    .frame(width: 145.0, height: 138.0)
+                                VStack{
+                                    Image(systemName: "pencil.and.list.clipboard")
+                                    Text("")
+                                     Text("Workout")
+                                         .font(.title3)
+                                     Text("Log")
+                                         .font(.title3)
+                                }
+                            }
+                            Spacer()
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
+                                    .cornerRadius(40)
+                                    .frame(width: 145.0, height: 138.0)
+                                VStack{
+                                    Image(systemName: "megaphone.fill")
+                                    Text("")
+                                     Text("Updates /")
+                                         .font(.title3)
+                                     Text("Postings")
+                                         .font(.title3)
+                                }
+                            }
+                            Spacer()
+                        }
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
+                                    .cornerRadius(40)
+                                    .frame(width: 145.0, height: 138.0)
+                                VStack{
+                                    Image(systemName: "rectangle.and.hand.point.up.left.fill")
+                                    Text("")
+                                     Text("Room")
+                                         .font(.title3)
+                                     Text("Booking")
+                                         .font(.title3)
+                                }
+                            }
+                            Spacer()
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
+                                    .cornerRadius(40)
+                                    .frame(width: 145.0, height: 138.0)
+                                VStack{
+                                    Image(systemName: "ellipsis")
+                                    Text("")
+                                     Text("Others")
+                                         .font(.title3)
+                                }
+                            }
+                            Spacer()
+                        }
+                        
+                    
+                    }
+                }
+                
                 
             }
         }

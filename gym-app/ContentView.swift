@@ -14,6 +14,16 @@ struct ContentView: View {
             Color(red: 0, green: 0.329, blue: 0.604).opacity(0.41).ignoresSafeArea()
             
             VStack{
+                HStack{
+                    Text("home".uppercased())
+                        .font(.title)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    Spacer()
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                }.padding(.horizontal, 30)
+                Spacer()
                 Spacer()
                 //FACILITY HOURS ORANGE BOX
                 ZStack{
@@ -61,7 +71,6 @@ struct ContentView: View {
                 // DARK BLUE BOX WITH BUTTONS
                 ZStack{
                     Rectangle()
-                        .padding(.bottom, 10.0)
                         .foregroundColor(Color(red: 0, green: 0.329, blue: 0.604))
                         .cornerRadius(40)
                         .ignoresSafeArea()

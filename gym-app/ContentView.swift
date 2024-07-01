@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var showSheet: Bool = false
+    
     var body: some View {
         
         ZStack {
@@ -18,13 +21,20 @@ struct ContentView: View {
                     Text("home".uppercased())
                         .font(.title)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    
                     Spacer()
-                    Image(systemName: "gearshape.fill")
-                        .resizable()
-                        .frame(width: 35, height: 35)
+                    
+                    Button(action: {print("open to settings")}, label: {
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                    })
+                    
                 }.padding(.horizontal, 30)
+                
                 Spacer()
                 Spacer()
+                
                 //FACILITY HOURS ORANGE BOX
                 ZStack{
                     Rectangle()
@@ -76,9 +86,13 @@ struct ContentView: View {
                         .ignoresSafeArea()
                     
                     VStack{
+                        
                         Spacer()
+                        
                         HStack{
+                            
                             Spacer()
+                            
                             //buttons
                             Button(action: {
                                 print("open to equipment info page")
@@ -98,7 +112,9 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            
                             Spacer()
+                            
                             Button(action: {
                                 print("open to workout buddy page")
                             }, label:{
@@ -117,11 +133,17 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            
                             Spacer()
+                            
                         }
+                        
                         Spacer()
+                        
                         HStack{
+                            
                             Spacer()
+                            
                             Button(action: {
                                 print("open to workout log page")
                             }, label:{
@@ -140,7 +162,9 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            
                             Spacer()
+                            
                             Button(action: {
                                 print("open to updates/postings page")
                             }, label:{
@@ -159,13 +183,20 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            
                             Spacer()
+                            
                         }
+                        
                         Spacer()
+                        
                         HStack{
+                            
                             Spacer()
+                            
                             Button(action: {
-                                print("open to room bookings page")
+                                showSheet.toggle()
+                                
                             }, label:{
                                 VStack{
                                     Image(systemName: "rectangle.and.hand.point.up.left.fill")
@@ -182,7 +213,11 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            .fullScreenCover(isPresented: $showSheet, content: {
+                                RoomBooking()})
+                            
                             Spacer()
+                            
                             Button(action: {
                                 print("open to room bookings page")
                             }, label:{
@@ -201,7 +236,9 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            
                             Spacer()
+                            
                         }
                         
                     
@@ -216,6 +253,191 @@ struct ContentView: View {
     }
 }
 
+struct RoomBooking: View {
+    @Environment(\.presentationMode) var presentationMode
+    var body: some View {
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            
+            VStack{
+                
+                // X button to dismiss screen
+                HStack{
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                    })
+                    Spacer()
+                }.padding(.horizontal, 20)
+                
+                Spacer()
+                Spacer()
+                
+                //TITLE
+                ZStack{
+                    Rectangle()
+                        .foregroundColor(.orange)
+                        .cornerRadius(40)
+                        .frame(height: 120.0)
+                        .padding(.horizontal, 20)
+                    
+                    Text("Room booking".uppercased())
+                        .font(.title)
+                    
+                }
+                
+                // ROOMS
+                VStack{
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        
+                        
+                        Button(action: {
+                            print("open to athletic training area room resv page")
+                        }, label:{
+                            ZStack{
+                                Image("carw-athletic")
+                                    .resizable()
+                                   .aspectRatio(contentMode: .fill)
+                                   .frame(width: 145.0, height: 138.0, alignment: .topLeading)
+                                   .border(.blue)
+                                   .cornerRadius(40)
+                                   .clipped()
+                                Text("athletic training area".uppercased())
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 20)
+                            }
+                        })
+                        
+                        Spacer()
+                        Button(action: {
+                            print("open to n&n practice gym resv page")
+                        }, label:{
+                            ZStack{
+                                Image("carw-gymnasium")
+                                    .resizable()
+                                   .aspectRatio(contentMode: .fill)
+                                   .frame(width: 145.0, height: 138.0, alignment: .topLeading)
+                                   .border(.blue)
+                                   .cornerRadius(40)
+                                   .clipped()
+                                Text("n&n \n practice gym".uppercased())
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 20)
+                            }
+                        })
+                        Spacer()
+                    }
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        
+                        
+                        Button(action: {
+                            print("open to voelkel gym room resv page")
+                        }, label:{
+                            ZStack{
+                                Image("carw-voelkel")
+                                    .resizable()
+                                   .aspectRatio(contentMode: .fill)
+                                   .frame(width: 145.0, height: 138.0, alignment: .topLeading)
+                                   .border(.blue)
+                                   .cornerRadius(40)
+                                   .clipped()
+                                Text("Voelkel \n Gym".uppercased())
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 20)
+                            }
+                        })
+                        
+                        Spacer()
+                        Button(action: {
+                            print("open to studio 147 room resv page")
+                        }, label:{
+                            ZStack{
+                                Image("carw-studio1")
+                                    .resizable()
+                                   .aspectRatio(contentMode: .fill)
+                                   .frame(width: 145.0, height: 138.0, alignment: .topLeading)
+                                   .border(.blue)
+                                   .cornerRadius(40)
+                                   .clipped()
+                                Text("Studio \n 147".uppercased())
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 20)
+                            }
+                        })
+                        Spacer()
+                    }
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        
+                        
+                        Button(action: {
+                            print("open to ahmanson studio room resv page")
+                        }, label:{
+                            ZStack{
+                                Image("carw-yoga")
+                                    .resizable()
+                                   .aspectRatio(contentMode: .fill)
+                                   .frame(width: 145.0, height: 138.0, alignment: .topLeading)
+                                   .border(.blue)
+                                   .cornerRadius(40)
+                                   .clipped()
+                                Text("Ahmanson \n studio".uppercased())
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 20)
+                            }
+                        })
+                        
+                        Spacer()
+                        Button(action: {
+                            print("open to conference room resv page")
+                        }, label:{
+                            ZStack{
+                                Image("carw-conference")
+                                    .resizable()
+                                   .aspectRatio(contentMode: .fill)
+                                   .frame(width: 145.0, height: 138.0, alignment: .topLeading)
+                                   .border(.blue)
+                                   .cornerRadius(40)
+                                   .clipped()
+                                Text("Conference \n Room".uppercased())
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 20)
+                            }
+                        })
+                        Spacer()
+                    }
+                    
+                
+                }
+                
+                
+                
+            }
+        }
+    }
+}
+
 #Preview {
     ContentView()
+    //RoomBooking()
 }

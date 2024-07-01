@@ -28,6 +28,7 @@ struct ContentView: View {
                         Image(systemName: "gearshape.fill")
                             .resizable()
                             .frame(width: 35, height: 35)
+                            .foregroundColor(Color(red: 0, green: 0.329, blue: 0.604))
                     })
                     
                 }.padding(.horizontal, 30)
@@ -95,7 +96,7 @@ struct ContentView: View {
                             
                             //buttons
                             Button(action: {
-                                print("open to equipment info page")
+                                showSheet.toggle()
                             }, label:{
                                 VStack{
                                     Image(systemName: "dumbbell.fill")
@@ -112,11 +113,13 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            .fullScreenCover(isPresented: $showSheet, content: {
+                                EquipmentInfo()})
                             
                             Spacer()
                             
                             Button(action: {
-                                print("open to workout buddy page")
+                                showSheet.toggle()
                             }, label:{
                                 VStack{
                                     Image(systemName: "figure.socialdance")
@@ -133,6 +136,8 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            .fullScreenCover(isPresented: $showSheet, content: {
+                                WorkoutBuddy()})
                             
                             Spacer()
                             
@@ -168,7 +173,7 @@ struct ContentView: View {
                             Spacer()
                             
                             Button(action: {
-                                print("open to updates/postings page")
+                                showSheet.toggle()
                             }, label:{
                                 VStack{
                                     Image(systemName: "megaphone.fill")
@@ -185,6 +190,8 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            .fullScreenCover(isPresented: $showSheet, content: {
+                                Updates()})
                             
                             Spacer()
                             
@@ -221,7 +228,7 @@ struct ContentView: View {
                             Spacer()
                             
                             Button(action: {
-                                print("open to room bookings page")
+                                showSheet.toggle()
                             }, label:{
                                 VStack{
                                     Image(systemName: "ellipsis")
@@ -238,6 +245,8 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            .fullScreenCover(isPresented: $showSheet, content: {
+                                Others()})
                             
                             Spacer()
                             
@@ -252,6 +261,58 @@ struct ContentView: View {
             }
         }
         
+    }
+}
+
+struct EquipmentInfo: View {
+    @Environment(\.presentationMode) var presentationMode
+    var body: some View {
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            
+            VStack{
+
+                // HEADER
+                HStack(alignment: .top){
+                    // X button
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                    })
+                    
+                    Spacer()
+                }.padding(.horizontal, 20)
+            }
+        }
+    }
+}
+
+struct WorkoutBuddy: View {
+    @Environment(\.presentationMode) var presentationMode
+    var body: some View {
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            
+            VStack{
+                
+                // HEADER
+                HStack(alignment: .top){
+                    // X button
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                    })
+                    
+                    Spacer()
+                }.padding(.horizontal, 20)
+            }
+        }
     }
 }
 
@@ -304,6 +365,34 @@ struct WorkoutLog: View {
         }
     }
 }
+
+
+struct Updates: View {
+    @Environment(\.presentationMode) var presentationMode
+    var body: some View {
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            
+            VStack{
+
+                // HEADER
+                HStack(alignment: .top){
+                    // X button
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                    })
+                    
+                    Spacer()
+                }.padding(.horizontal, 20)
+            }
+        }
+    }
+}
+
 
 struct RoomBooking: View {
     @Environment(\.presentationMode) var presentationMode
@@ -484,6 +573,32 @@ struct RoomBooking: View {
                 
                 
                 
+            }
+        }
+    }
+}
+
+struct Others: View {
+    @Environment(\.presentationMode) var presentationMode
+    var body: some View {
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            
+            VStack{
+
+                // HEADER
+                HStack(alignment: .top){
+                    // X button
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                    })
+                    
+                    Spacer()
+                }.padding(.horizontal, 20)
             }
         }
     }

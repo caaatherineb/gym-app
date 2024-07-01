@@ -70,111 +70,134 @@ struct ContentView: View {
                         Spacer()
                         HStack{
                             Spacer()
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
-                                    .cornerRadius(40)
-                                    .frame(width: 145.0, height: 138.0)
+                            //buttons
+                            Button(action: {
+                                print("open to equipment info page")
+                            }, label:{
                                 VStack{
                                     Image(systemName: "dumbbell.fill")
-    //                                    .resizable()
-    //                                    .aspectRatio(contentMode: .fit)
-                                    Text("")
-                                    Text("Equipment")
-                                        .font(.title3)
-                                    Text("Information")
-                                        .font(.title3)
+                                    Text("Equipment \n Information".uppercased())
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .padding()
+                                        .padding(.horizontal, 20)
+                                        
                                 }
-                                
-                                    
-                            }
-                                
+                                .background(
+                                    Color(red:1.0, green: 0.7843, blue: 0.5765)
+                                        .cornerRadius(40)
+                                        .frame(width: 145.0, height: 138.0))
+                                .foregroundColor(.black)
+                            })
                             Spacer()
-                            ZStack{
-                                Rectangle()
-                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
-                                    .cornerRadius(40)
-                                    .frame(width: 145.0, height: 138.0)
+                            Button(action: {
+                                print("open to workout buddy page")
+                            }, label:{
                                 VStack{
                                     Image(systemName: "figure.socialdance")
-                                    Text("")
-                                     Text("Workout")
-                                         .font(.title3)
-                                     Text("Buddy")
-                                         .font(.title3)
+                                    Text("Workout \n Buddy".uppercased())
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .padding()
+                                        .padding(.horizontal, 20)
+                                        
                                 }
-                            }
+                                .background(
+                                    Color(red:1.0, green: 0.7843, blue: 0.5765)
+                                        .cornerRadius(40)
+                                        .frame(width: 145.0, height: 138.0))
+                                .foregroundColor(.black)
+                            })
                             Spacer()
                         }
                         Spacer()
                         HStack{
                             Spacer()
-                            ZStack{
-                                Rectangle()
-                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
-                                    .cornerRadius(40)
-                                    .frame(width: 145.0, height: 138.0)
+                            Button(action: {
+                                print("open to workout log page")
+                            }, label:{
                                 VStack{
                                     Image(systemName: "pencil.and.list.clipboard")
-                                    Text("")
-                                     Text("Workout")
-                                         .font(.title3)
-                                     Text("Log")
-                                         .font(.title3)
+                                    Text("Workout \n Log".uppercased())
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .padding()
+                                        .padding(.horizontal, 20)
+                                        
                                 }
-                            }
+                                .background(
+                                    Color(red:1.0, green: 0.7843, blue: 0.5765)
+                                        .cornerRadius(40)
+                                        .frame(width: 145.0, height: 138.0))
+                                .foregroundColor(.black)
+                            })
                             Spacer()
-                            ZStack{
-                                Rectangle()
-                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
-                                    .cornerRadius(40)
-                                    .frame(width: 145.0, height: 138.0)
+                            Button(action: {
+                                print("open to updates/postings page")
+                            }, label:{
                                 VStack{
                                     Image(systemName: "megaphone.fill")
-                                    Text("")
-                                     Text("Updates /")
-                                         .font(.title3)
-                                     Text("Postings")
-                                         .font(.title3)
+                                    Text("Updates \n postings".uppercased())
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .padding()
+                                        .padding(.horizontal, 20)
+                                        
                                 }
-                            }
+                                .background(
+                                    Color(red:1.0, green: 0.7843, blue: 0.5765)
+                                        .cornerRadius(40)
+                                        .frame(width: 145.0, height: 138.0))
+                                .foregroundColor(.black)
+                            })
                             Spacer()
                         }
                         Spacer()
                         HStack{
                             Spacer()
-                            ZStack{
-                                Rectangle()
-                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
-                                    .cornerRadius(40)
-                                    .frame(width: 145.0, height: 138.0)
+                            Button(action: {
+                                print("open to room bookings page")
+                            }, label:{
                                 VStack{
                                     Image(systemName: "rectangle.and.hand.point.up.left.fill")
-                                    Text("")
-                                     Text("Room")
-                                         .font(.title3)
-                                     Text("Booking")
-                                         .font(.title3)
+                                    Text("Room \n booking".uppercased())
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .padding()
+                                        .padding(.horizontal, 20)
+                                        
                                 }
-                            }
+                                .background(
+                                    Color(red:1.0, green: 0.7843, blue: 0.5765)
+                                        .cornerRadius(40)
+                                        .frame(width: 145.0, height: 138.0))
+                                .foregroundColor(.black)
+                            })
                             Spacer()
-                            ZStack{
-                                Rectangle()
-                                    .foregroundColor(Color(red:1.0, green: 0.7843, blue: 0.5765))
-                                    .cornerRadius(40)
-                                    .frame(width: 145.0, height: 138.0)
+                            Button(action: {
+                                print("open to room bookings page")
+                            }, label:{
                                 VStack{
                                     Image(systemName: "ellipsis")
-                                    Text("")
-                                     Text("Others")
-                                         .font(.title3)
+                                    Text("others".uppercased())
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .padding()
+                                        .padding(.horizontal, 20)
+                                        
                                 }
-                            }
+                                .background(
+                                    Color(red:1.0, green: 0.7843, blue: 0.5765)
+                                        .cornerRadius(40)
+                                        .frame(width: 145.0, height: 138.0))
+                                .foregroundColor(.black)
+                            })
                             Spacer()
                         }
                         
                     
                     }
+                    
                 }
                 
                 

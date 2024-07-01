@@ -145,7 +145,7 @@ struct ContentView: View {
                             Spacer()
                             
                             Button(action: {
-                                print("open to workout log page")
+                                showSheet.toggle()
                             }, label:{
                                 VStack{
                                     Image(systemName: "pencil.and.list.clipboard")
@@ -162,6 +162,8 @@ struct ContentView: View {
                                         .frame(width: 145.0, height: 138.0))
                                 .foregroundColor(.black)
                             })
+                            .fullScreenCover(isPresented: $showSheet, content: {
+                                WorkoutLog()})
                             
                             Spacer()
                             
@@ -250,6 +252,56 @@ struct ContentView: View {
             }
         }
         
+    }
+}
+
+
+struct WorkoutLog: View {
+    @Environment(\.presentationMode) var presentationMode
+    var body: some View {
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            
+            VStack{
+
+                // HEADER
+                HStack(alignment: .top){
+                    // X button
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                    })
+                    
+                    Spacer()
+                    
+                    // SEARCH button
+                    Button (action: {
+                        print("search")
+                    }, label: {
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.red)
+                    }).padding(.horizontal, 10)
+                    
+                    //ADD button
+                    Button(action: {
+                        print("add")
+                    }, label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.red)
+                    })
+                    
+                    
+
+                }.padding(.horizontal, 20)
+            }
+        }
     }
 }
 
@@ -437,7 +489,9 @@ struct RoomBooking: View {
     }
 }
 
+
 #Preview {
     ContentView()
     //RoomBooking()
+    //WorkoutLog()
 }

@@ -39,15 +39,27 @@ struct ContentView: View {
       .tabItem {
           Label("Home", systemImage: "gear")
       }
+      .tag(0)
         
         
       NavigationView {
         WorkoutBuddy()
           .navigationTitle("Workout Buddy")
+          .toolbar {
+              ToolbarItem(placement: .navigationBarTrailing) {
+                  Button(action: {
+                      selectedTab = 0
+                  }) {
+                      Image(systemName: "xmark.circle")
+                          .foregroundColor(.black)
+                  }
+              }
+          }
       }
       .tabItem {
         Label("Workout Buddy", systemImage: "gear")
       }
+      .tag(1)
         
         
       NavigationView {
@@ -56,7 +68,7 @@ struct ContentView: View {
           .toolbar {
               ToolbarItem(placement: .navigationBarTrailing) {
                   Button(action: {
-                      presentationMode.wrappedValue.dismiss() // FIX: RETURN TO HOME PAGE
+                      selectedTab = 0
                   }) {
                       Image(systemName: "xmark.circle")
                           .foregroundColor(.black)
@@ -67,33 +79,67 @@ struct ContentView: View {
       .tabItem {
         Label("Equip", systemImage: "gear")
       }
+      .tag(2)
         
         
       NavigationView {
         WorkoutLog()
           .navigationTitle("Workout Log")
+          .toolbar {
+              ToolbarItem(placement: .navigationBarTrailing) {
+                  Button(action: {
+                      selectedTab = 0
+                  }) {
+                      Image(systemName: "xmark.circle")
+                          .foregroundColor(.black)
+                  }
+              }
+          }
       }
       .tabItem {
         Label("Log", systemImage: "doc.text")
       }
+      .tag(3)
         
         
       NavigationView {
         Updates()
           .navigationTitle("Updates")
+          .toolbar {
+              ToolbarItem(placement: .navigationBarTrailing) {
+                  Button(action: {
+                      selectedTab = 0
+                  }) {
+                      Image(systemName: "xmark.circle")
+                          .foregroundColor(.black)
+                  }
+              }
+          }
       }
       .tabItem {
         Label("Updates", systemImage: "bell")
       }
+      .tag(4)
         
         
       NavigationView {
         RoomBooking()
           .navigationTitle("Room Booking")
+          .toolbar {
+              ToolbarItem(placement: .navigationBarTrailing) {
+                  Button(action: {
+                      selectedTab = 0
+                  }) {
+                      Image(systemName: "xmark.circle")
+                          .foregroundColor(.black)
+                  }
+              }
+          }
       }
       .tabItem {
         Label("Booking", systemImage: "calendar")
       }
+      .tag(5)
         
         
       NavigationView {
@@ -103,10 +149,12 @@ struct ContentView: View {
       .tabItem {
         Label("Others", systemImage: "ellipsis")
       }
+      .tag(6)
       .accentColor(.blue)
     }
   }
 }
+
 
 struct Home: View{
   @State public var showAnnouncement = false
@@ -173,7 +221,7 @@ struct Home: View{
   }
 }
 
-
+// FIX: need assets
 struct EquipmentInfo: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -234,22 +282,6 @@ struct WorkoutBuddy: View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.all)
             
-            VStack{
-                
-                // HEADER
-                HStack(alignment: .top){
-                    // X button
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                    })
-                    
-                    Spacer()
-                }.padding(.horizontal, 20)
-            }
         }
     }
 }
@@ -261,45 +293,6 @@ struct WorkoutLog: View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.all)
             
-            VStack{
-
-                // HEADER
-                HStack(alignment: .top){
-                    // X button
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                    })
-                    
-                    Spacer()
-                    
-                    // SEARCH button
-                    Button (action: {
-                        print("search")
-                    }, label: {
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.red)
-                    }).padding(.horizontal, 10)
-                    
-                    //ADD button
-                    Button(action: {
-                        print("add")
-                    }, label: {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.red)
-                    })
-                    
-                    
-
-                }.padding(.horizontal, 20)
-            }
         }
     }
 }
@@ -311,22 +304,6 @@ struct Updates: View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.all)
             
-            VStack{
-
-                // HEADER
-                HStack(alignment: .top){
-                    // X button
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                    })
-                    
-                    Spacer()
-                }.padding(.horizontal, 20)
-            }
         }
     }
 }
@@ -339,21 +316,6 @@ struct RoomBooking: View {
             Color.blue.edgesIgnoringSafeArea(.all)
             
             VStack{
-                
-                // X button to dismiss screen
-                HStack{
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                    })
-                    Spacer()
-                    
-                }.padding(.horizontal, 20)
-                
-                
                 //TITLE
                 Spacer()
                 ZStack{
@@ -523,22 +485,7 @@ struct Others: View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.all)
             
-            VStack{
-
-                // HEADER
-                HStack(alignment: .top){
-                    // X button
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                    })
-                    
-                    Spacer()
-                }.padding(.horizontal, 20)
-            }
+            
         }
     }
 }

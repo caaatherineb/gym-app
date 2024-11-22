@@ -10,223 +10,229 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.presentationMode) var presentationMode
-
-    
-    // test from edits
     
     
-    
-    
-  init() {
-      // Set the tab bar background color to orange
-      let appearance = UITabBarAppearance()
-    
-      appearance.backgroundColor = UIColor(red: 0.1, green: 0.3, blue: 0.8, alpha: 1.0)
-      
-      UITabBar.appearance().standardAppearance = appearance
-      
-      
-      // For iOS 15 and above to support scrollEdgeAppearance
-      if #available(iOS 15.0, *) {
-        UITabBar.appearance().scrollEdgeAppearance = appearance
-      }
+    init() {
+        // Set the tab bar background color to orange
+        let appearance = UITabBarAppearance()
+        
+        appearance.backgroundColor = UIColor(red: 0.1, green: 0.3, blue: 0.8, alpha: 1.0)
+        
+        UITabBar.appearance().standardAppearance = appearance
+        
+        
+        // For iOS 15 and above to support scrollEdgeAppearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
     }
     
     
-  @State private var selectedTab = 0
+    @State private var selectedTab = 0
     
-  var body: some View {
-    TabView(selection: $selectedTab) {
-        
-      NavigationView {
-        Home()
-      }
-      .tabItem {
-          Label("Home", systemImage: "gear")
-      }
-      .tag(0)
-        
-        
-      NavigationView {
-        WorkoutBuddy()
-          .navigationTitle("Workout Buddy")
-          .toolbar {
-              ToolbarItem(placement: .navigationBarTrailing) {
-                  Button(action: {
-                      selectedTab = 0
-                  }) {
-                      Image(systemName: "xmark.circle")
-                          .foregroundColor(.black)
-                  }
-              }
-          }
-      }
-      .tabItem {
-        Label("Workout Buddy", systemImage: "gear")
-      }
-      .tag(1)
-        
-        
-      NavigationView {
-        EquipmentInfo()
-          .navigationTitle("Equipment")
-          .toolbar {
-              ToolbarItem(placement: .navigationBarTrailing) {
-                  Button(action: {
-                      selectedTab = 0
-                  }) {
-                      Image(systemName: "xmark.circle")
-                          .foregroundColor(.black)
-                  }
-              }
-          }
-      }
-      .tabItem {
-        Label("Equip", systemImage: "gear")
-      }
-      .tag(2)
-        
-        
-      NavigationView {
-        WorkoutLog()
-          .navigationTitle("Workout Log")
-          .toolbar {
-              ToolbarItem(placement: .navigationBarTrailing) {
-                  Button(action: {
-                      selectedTab = 0
-                  }) {
-                      Image(systemName: "xmark.circle")
-                          .foregroundColor(.black)
-                  }
-              }
-          }
-      }
-      .tabItem {
-        Label("Log", systemImage: "doc.text")
-      }
-      .tag(3)
-        
-        
-      NavigationView {
-        Updates()
-          .navigationTitle("Updates")
-          .toolbar {
-              ToolbarItem(placement: .navigationBarTrailing) {
-                  Button(action: {
-                      selectedTab = 0
-                  }) {
-                      Image(systemName: "xmark.circle")
-                          .foregroundColor(.black)
-                  }
-              }
-          }
-      }
-      .tabItem {
-        Label("Updates", systemImage: "bell")
-      }
-      .tag(4)
-        
-        
-      NavigationView {
-        RoomBooking()
-          .navigationTitle("Room Booking")
-          .toolbar {
-              ToolbarItem(placement: .navigationBarTrailing) {
-                  Button(action: {
-                      selectedTab = 0
-                  }) {
-                      Image(systemName: "xmark.circle")
-                          .foregroundColor(.black)
-                  }
-              }
-          }
-      }
-      .tabItem {
-        Label("Booking", systemImage: "calendar")
-      }
-      .tag(5)
-        
-        
-      NavigationView {
-        Others()
-          .navigationTitle("Others")
-      }
-      .tabItem {
-        Label("Others", systemImage: "ellipsis")
-      }
-      .tag(6)
-      .accentColor(.blue)
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            
+            NavigationView {
+                Home()
+            }
+            .tabItem {
+                Label("Home", systemImage: "gear")
+            }
+            .tag(0)
+            
+            
+            NavigationView {
+                WorkoutBuddy()
+                    .navigationTitle("Workout Buddy")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                selectedTab = 0
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Workout Buddy", systemImage: "gear")
+            }
+            .tag(1)
+            
+            
+            NavigationView {
+                EquipmentInfo()
+                    .navigationTitle("Equipment")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                selectedTab = 0
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Equip", systemImage: "gear")
+            }
+            .tag(2)
+            
+            
+            NavigationView {
+                WorkoutLog()
+                    .navigationTitle("Workout Log")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                selectedTab = 0
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Log", systemImage: "doc.text")
+            }
+            .tag(3)
+            
+            
+            //      NavigationView {
+            //        Updates()
+            //          .navigationTitle("Updates")
+            //          .toolbar {
+            //              ToolbarItem(placement: .navigationBarTrailing) {
+            //                  Button(action: {
+            //                      selectedTab = 0
+            //                  }) {
+            //                      Image(systemName: "xmark.circle")
+            //                          .foregroundColor(.black)
+            //                  }
+            //              }
+            //          }
+            //      }
+            //      .tabItem {
+            //        Label("Updates", systemImage: "bell")
+            //      }
+            //      .tag(4)
+            
+            
+            NavigationView {
+                RoomBooking()
+                    .navigationTitle("Room Booking")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                selectedTab = 0
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Booking", systemImage: "calendar")
+            }
+            .tag(5)
+            
+            
+            NavigationView {
+                Others()
+                    .navigationTitle("Others")
+            }
+            .tabItem {
+                Label("Others", systemImage: "ellipsis")
+            }
+            .tag(6)
+            .accentColor(.blue)
+        }
     }
-  }
 }
-
 
 struct Home: View{
-  @State public var showAnnouncement = false
-  @Environment(\.presentationMode) var presentationMode
-  var body: some View {
-
+    @State public var showAnnouncement = false
+    @Environment(\.presentationMode) var presentationMode
     // FIX SO THAT IT IS LINKED TO FIRST ITEM OF ANNOUNCEMENTS
-    let latestAnnouncement = "New Gym Hours! Now open from 5 AM to 10 PM daily."
-      
-    VStack {
-      ZStack {
-        // Rounded Rectangle
-        RoundedRectangle(cornerRadius: 25)
-          .fill(Color.blue) // Background color for the rectangle
-          .frame(width: 350, height: 270) // Size of the rectangle
-          .position(x: 200, y: 150)
-        // Text overlay
-        Text("Welcome to Home")
-          .font(.title)
-          .foregroundColor(.white)
-      }
+    private let latestAnnouncement = "New Gym Hours! Now open from 5 AM to 10 PM daily."
+    
+    var body: some View {
         
-      ZStack{
-        RoundedRectangle(cornerRadius: 25)
-          .fill(Color.blue) // Background color for the rectangle
-          .frame(width: 120, height: 120) // Size of the rectangle
-          .position(x: 100, y: 190)
-      }
-        
-      ZStack{
-        RoundedRectangle(cornerRadius: 25)
-          .fill(Color.blue) // Background color for the rectangle
-          .frame(width: 120, height: 120) // Size of the rectangle
-          .position(x: 300, y: 10)
-      }
-        
-      // Announcements Snippet
-      RoundedRectangle(cornerRadius: 25)
-        .fill(Color.blue.opacity(0.1)) // Background color for the snippet
-        .frame(width: 350, height: 250)// Adjust height to fit content
-        .overlay(
-          HStack {
-            VStack(alignment: .leading) {
-              Text("Latest Announcement")
-                .font(.headline)
-                .foregroundColor(.blue)
-              Text(latestAnnouncement)
-                .font(.subheadline)
-                .foregroundColor(.black)
-                .lineLimit(2) // Limit text to 2 lines
+        NavigationStack{
+            VStack {
+                
+                // Top block
+                ZStack {
+                    // TO DO: @kshoop27 edit here to add hours, thanks!
+                    
+                    // Rounded Rectangle
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color.blue) // Background color for the rectangle
+                        .frame(width: 350, height: 270) // Size of the rectangle
+                        .position(x: 200, y: 150)
+                    // Text overlay
+                    Text("Welcome to Home")
+                        .font(.title)
+                        .foregroundColor(.white)
+                }
+                
+                // Two squares in the middle
+                ZStack{
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color.blue) // Background color for the rectangle
+                        .frame(width: 120, height: 120) // Size of the rectangle
+                        .position(x: 100, y: 190)
+                }
+                ZStack{
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color.blue) // Background color for the rectangle
+                        .frame(width: 120, height: 120) // Size of the rectangle
+                        .position(x: 300, y: 10)
+                }
+                
+                
+                // Announcements Snippet
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(Color.blue.opacity(0.1)) // Background color for the snippet
+                    .frame(width: 350, height: 250)// Adjust height to fit content
+                    .overlay(
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Latest Announcement")
+                                    .font(.headline)
+                                    .foregroundColor(.blue)
+                                Text(latestAnnouncement)
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
+                                    .lineLimit(2) // Limit text to 2 lines
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.blue)
+                        }
+                            .padding()
+                    )
+                    .position(x:200, y:40)
+                    .onTapGesture {
+                        showAnnouncement = true
+                    }
+                    .padding()
+                
+                Spacer()
             }
-            Spacer()
-            Image(systemName: "chevron.right")
-              .foregroundColor(.blue)
-          }
-            .padding()
-        )
-        .position(x:200, y:40)
-        .onTapGesture {
-          showAnnouncement = true
+            .navigationDestination(isPresented: $showAnnouncement) {
+                //Updates(announcementText: latestAnnouncement)
+                Updates()
+            }
         }
-      Spacer()
     }
-  }
 }
 
-// FIX: need assets
 struct EquipmentInfo: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -304,11 +310,43 @@ struct WorkoutLog: View {
 
 
 struct Updates: View {
+    //let announcementText: String
+    let latestAnnouncement = "New Gym Hours! Now open from 5 AM to 10 PM daily."
+    
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.all)
             
+            VStack{
+                // Close button
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                }
+                
+                VStack {
+                    Text("Updates")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .bold()
+                        .padding()
+                    Text(latestAnnouncement)
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+            }
         }
     }
 }

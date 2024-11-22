@@ -15,7 +15,7 @@ struct EquipmentCardView: View {
             ZStack {
                 Image(equipment.imageName)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
                     .frame(height: 460)
                     .clipped()
             }
@@ -61,8 +61,10 @@ struct EquipmentCardView: View {
                 }
         }
     }
-        .background(Color(.tertiarySystemFill))
+        .padding()
+        .background(Color(.secondarySystemBackground))
         .cornerRadius(12)
+        .shadow(radius: 5)
     }
 }
 

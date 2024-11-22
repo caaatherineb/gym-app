@@ -43,26 +43,6 @@ struct ContentView: View {
             
             
             NavigationView {
-                WorkoutBuddy()
-                    .navigationTitle("Workout Buddy")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                selectedTab = 0
-                            }) {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    }
-            }
-            .tabItem {
-                Label("Workout Buddy", systemImage: "gear")
-            }
-            .tag(1)
-            
-            
-            NavigationView {
                 EquipmentInfo()
                     .navigationTitle("Equipment")
                     .toolbar {
@@ -119,6 +99,25 @@ struct ContentView: View {
                 Label("Booking", systemImage: "calendar")
             }
             .tag(5)
+            
+            NavigationView {
+                WorkoutBuddy()
+                    .navigationTitle("Workout Buddy")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                selectedTab = 0
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Workout Buddy", systemImage: "gear")
+            }
+            .tag(1)
             
             
             NavigationView {
@@ -278,10 +277,35 @@ struct WorkoutBuddy: View {
 struct WorkoutLog: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        ZStack {
-            Color.blue.edgesIgnoringSafeArea(.all)
-            
-        }
+        CalendarPageView(activities: [
+            Activity(
+                name: "Morning Run",
+                description: "A quick jog around the park to start the day.",
+                type: 1,
+                date: Date(),
+                time: Date(),
+                distance: 3.5,
+                images: [UIImage(named: "hike")!]
+            ),
+            Activity(
+                name: "Evening Yoga",
+                description: "Relaxing yoga session to wind down.",
+                type: 5,
+                date: Date(),
+                time: Date(),
+                distance: 0.0,
+                images: [UIImage(named: "hike1")!]
+            ),
+            Activity(
+                name: "Morning Hike",
+                description: "Hike at Yosemite with friends",
+                type: 15,
+                date: Date(),
+                time: Date(),
+                distance: 3.5,
+                images: [UIImage(named: "walk")!]
+            )
+        ])
     }
 }
 
@@ -333,7 +357,7 @@ struct RoomBooking: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-            Color.blue.edgesIgnoringSafeArea(.all)
+            //Color.blue.edgesIgnoringSafeArea(.all)
             
             VStack{
                 // ROOMS

@@ -124,7 +124,7 @@ struct CalendarPage: View {
                         }
                     }
                     
-                    Spacer()
+                    //Spacer()
                     
                     Text("Stats")
                         .font(.headline)
@@ -191,6 +191,7 @@ struct CalendarPage: View {
     }
     
 }
+
 #Preview {
     CalendarPage()
 }

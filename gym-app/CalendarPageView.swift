@@ -43,14 +43,26 @@ struct CalendarPageView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 16) {
-                    ForEach(activities) { 
-                        activity in
-                        ActivityCardView(activity: activity, activityLabel: activityLabel)
+            VStack{
+                ScrollView {
+                    VStack(spacing: 16) {
+                        ForEach(activities) {
+                            activity in
+                            ActivityCardView(activity: activity, activityLabel: activityLabel)
+                        }
                     }
+                    .padding()
                 }
-                .padding()
+                
+                NavigationLink(destination: CalendarPage()){
+                    Text("ADD ACTIVITY")
+                        .font(.headline)
+                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 50)
+                        .foregroundStyle(.white)
+                        .background(Color.blue)
+                        .padding(.horizontal)
+                        .padding(.bottom, 16)
+                }
             }
             .navigationBarTitle("Activities", displayMode: .large)
         }

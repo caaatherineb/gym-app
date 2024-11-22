@@ -200,12 +200,10 @@ struct Home: View{
                     .onTapGesture {
                         showAnnouncement = true
                     }
-                    .padding()
                 
                 Spacer()
             }
             .navigationDestination(isPresented: $showAnnouncement) {
-                //Updates(announcementText: latestAnnouncement)
                 Updates()
             }
         }

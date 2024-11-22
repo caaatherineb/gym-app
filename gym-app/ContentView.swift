@@ -101,27 +101,6 @@ struct ContentView: View {
             }
             .tag(3)
             
-            
-            //      NavigationView {
-            //        Updates()
-            //          .navigationTitle("Updates")
-            //          .toolbar {
-            //              ToolbarItem(placement: .navigationBarTrailing) {
-            //                  Button(action: {
-            //                      selectedTab = 0
-            //                  }) {
-            //                      Image(systemName: "xmark.circle")
-            //                          .foregroundColor(.black)
-            //                  }
-            //              }
-            //          }
-            //      }
-            //      .tabItem {
-            //        Label("Updates", systemImage: "bell")
-            //      }
-            //      .tag(4)
-            
-            
             NavigationView {
                 RoomBooking()
                     .navigationTitle("Room Booking")

@@ -1,5 +1,5 @@
 //
-//  SecondCalendarPage.swift
+//  CalendarPage.swift
 //  gym-app
 //
 //  Created by Kaili Shoop on 10/28/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct SecondCalendarPage: View {
+struct CalendarPage: View {
     
     @State private var selectedActivity = 1
     @State private var activityName: String = ""
@@ -192,5 +192,5 @@ struct SecondCalendarPage: View {
     
 }
 #Preview {
-    SecondCalendarPage()
+    CalendarPage()
 }

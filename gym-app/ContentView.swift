@@ -316,21 +316,6 @@ struct RoomBooking: View {
             Color.blue.edgesIgnoringSafeArea(.all)
             
             VStack{
-                //TITLE
-                Spacer()
-                ZStack{
-                    
-                    Rectangle()
-                        .foregroundColor(.orange)
-                        .cornerRadius(20)
-                        .frame(height: 60.0)
-                        .padding(.horizontal, 20)
-                    
-                    Text("Room booking".uppercased())
-                        .font(.title)
-                    
-                }
-                
                 // ROOMS
                 VStack{
                     Spacer()

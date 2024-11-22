@@ -161,6 +161,7 @@ struct Home: View{
   @Environment(\.presentationMode) var presentationMode
   var body: some View {
 
+      
     // FIX SO THAT IT IS LINKED TO FIRST ITEM OF ANNOUNCEMENTS
     let latestAnnouncement = "New Gym Hours! Now open from 5 AM to 10 PM daily."
       
@@ -192,31 +193,35 @@ struct Home: View{
       }
         
       // Announcements Snippet
-      RoundedRectangle(cornerRadius: 25)
-        .fill(Color.blue.opacity(0.1)) // Background color for the snippet
-        .frame(width: 350, height: 250)// Adjust height to fit content
-        .overlay(
-          HStack {
-            VStack(alignment: .leading) {
-              Text("Latest Announcement")
-                .font(.headline)
-                .foregroundColor(.blue)
-              Text(latestAnnouncement)
-                .font(.subheadline)
-                .foregroundColor(.black)
-                .lineLimit(2) // Limit text to 2 lines
-            }
-            Spacer()
-            Image(systemName: "chevron.right")
-              .foregroundColor(.blue)
-          }
-            .padding()
-        )
-        .position(x:200, y:40)
-        .onTapGesture {
-          showAnnouncement = true
+        NavigationLink(destination: Updates(), isActive: $showAnnouncement){
+            RoundedRectangle(cornerRadius: 25)
+              .fill(Color.blue.opacity(0.1)) // Background color for the snippet
+              .frame(width: 350, height: 250)// Adjust height to fit content
+              .overlay(
+                HStack {
+                  VStack(alignment: .leading) {
+                    Text("Latest Announcement")
+                      .font(.headline)
+                      .foregroundColor(.blue)
+                    Text(latestAnnouncement)
+                      .font(.subheadline)
+                      .foregroundColor(.black)
+                      .lineLimit(2) // Limit text to 2 lines
+                  }
+                  Spacer()
+                  Image(systemName: "chevron.right")
+                    .foregroundColor(.blue)
+                }
+                  .padding()
+              )
+              .position(x:200, y:40)
+              .onTapGesture {
+                showAnnouncement = true
+              }
         }
-      Spacer()
+        .buttonStyle(PlainButtonStyle())
+      
+        Spacer()
     }
   }
 }

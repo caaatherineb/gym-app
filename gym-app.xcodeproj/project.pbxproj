@@ -63,10 +63,10 @@
 			children = (
 				53E293302C30074D002B5EF3 /* gym_appApp.swift */,
 				53E293322C30074D002B5EF3 /* ContentView.swift */,
-				53DED8862CE74A2200B77BB6 /* CalendarPage.swift */,
-				53DED8882CE74E4E00B77BB6 /* CalendarPageView.swift */,
 				53DED8822CE7411F00B77BB6 /* Equipment.swift */,
 				53DED8832CE7412000B77BB6 /* EquipmentCardView.swift */,
+				53DED8862CE74A2200B77BB6 /* CalendarPage.swift */,
+				53DED8882CE74E4E00B77BB6 /* CalendarPageView.swift */,
 				53DED87C2CE72D8800B77BB6 /* tempcodes.swift */,
 				53E293342C30074F002B5EF3 /* Assets.xcassets */,
 				53E293362C30074F002B5EF3 /* Preview Content */,

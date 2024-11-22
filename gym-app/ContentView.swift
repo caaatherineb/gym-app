@@ -122,10 +122,10 @@ struct ContentView: View {
             
             NavigationView {
                 Others()
-                    .navigationTitle("Others")
+                    .navigationTitle("Account Information")
             }
             .tabItem {
-                Label("Others", systemImage: "ellipsis")
+                Label("Account Info", systemImage: "person")
             }
             .tag(6)
             .accentColor(.blue)
@@ -158,6 +158,8 @@ struct Home: View{
                         .font(.title)
                         .foregroundColor(.white)
                 }
+                
+                // TO DO: Change these squares to a rectangular bar that shows the gym we are at
                 
                 // Two squares in the middle
                 ZStack{

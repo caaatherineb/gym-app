@@ -15,8 +15,8 @@ struct EquipmentCardView: View {
             ZStack {
                 Image(equipment.imageName)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 550)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 460)
                     .clipped()
             }
             .overlay(alignment: .topTrailing) {

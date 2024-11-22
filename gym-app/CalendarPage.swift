@@ -10,14 +10,14 @@ import PhotosUI
 
 struct CalendarPage: View {
     
-    @State private var selectedActivity = 1
-    @State private var activityName: String = ""
-    @State private var activityDescription: String = ""
-    @State private var selectedItems: [PhotosPickerItem] = []
-    @State private var selectedImages: [UIImage] = []
-    @State private var activityDate = Date()
-    @State private var activityTime = Date()
-    @State private var distance: Double = 0.0
+    @State var selectedActivity = 1
+    @State var activityName: String = ""
+    @State var activityDescription: String = ""
+    @State var selectedItems: [PhotosPickerItem] = []
+    @State var selectedImages: [UIImage] = []
+    @State var activityDate = Date()
+    @State var activityTime = Date()
+    @State var distance: Double = 0.0
     
     var body: some View {
         NavigationView {

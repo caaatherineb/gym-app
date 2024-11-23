@@ -160,20 +160,31 @@ struct Home: View{
                 }
                 
                 // TO DO: Change these squares to a rectangular bar that shows the gym we are at
+                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                    .fill(Color.blue)
+                    .frame(width: 350, height: 120)
+                    .overlay(
+                        HStack{
+                            Image("carw_exterior")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipped()
+                        })
+                    .position(x:200, y:120)
                 
-                // Two squares in the middle
-                ZStack{
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.blue) // Background color for the rectangle
-                        .frame(width: 120, height: 120) // Size of the rectangle
-                        .position(x: 100, y: 190)
-                }
-                ZStack{
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.blue) // Background color for the rectangle
-                        .frame(width: 120, height: 120) // Size of the rectangle
-                        .position(x: 300, y: 10)
-                }
+//                // Two squares in the middle
+//                ZStack{
+//                    RoundedRectangle(cornerRadius: 25)
+//                        .fill(Color.blue) // Background color for the rectangle
+//                        .frame(width: 120, height: 120) // Size of the rectangle
+//                        .position(x: 100, y: 190)
+//                }
+//                ZStack{
+//                    RoundedRectangle(cornerRadius: 25)
+//                        .fill(Color.blue) // Background color for the rectangle
+//                        .frame(width: 120, height: 120) // Size of the rectangle
+//                        .position(x: 300, y: 10)
+//                }
                 
                 
                 // Announcements Snippet
@@ -197,7 +208,7 @@ struct Home: View{
                         }
                             .padding()
                     )
-                    .position(x:200, y:40)
+                    .position(x:200, y:90)
                     .onTapGesture {
                         showAnnouncement = true
                     }

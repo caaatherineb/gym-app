@@ -313,8 +313,13 @@ struct WorkoutLog: View {
 
 
 struct Updates: View {
-    //let announcementText: String
-    let latestAnnouncement = "New Gym Hours! Now open from 5 AM to 10 PM daily."
+    let announcements = [
+        "New Gym Hours! Now open from 5 AM to 10 PM daily.",
+        "Don't miss the Yoga Workshop this Saturday!",
+        "Introducing new cycling classes starting next week.",
+        "Book a room at the CARW today!",
+        "CARW is closed Thanksgiving Day and Christmas Day"
+    ]
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -322,7 +327,7 @@ struct Updates: View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.all)
             
-            VStack{
+            VStack {
                 // Close button
                 HStack {
                     Spacer()
@@ -337,23 +342,35 @@ struct Updates: View {
                     }
                 }
                 
-                VStack {
-                    Text("Updates")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding()
-                    Text(latestAnnouncement)
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                        .padding()
+                Text("Updates")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding()
+                
+                ScrollView {
+                    VStack(spacing: 16) {
+                        ForEach(announcements, id: \.self) { announcement in
+                            VStack {
+                                Text(announcement)
+                                    .font(.title3)
+                                    .foregroundColor(.primary)
+                                    .multilineTextAlignment(.center)
+                                    .padding()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .background(Color.white)
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                            .padding(.horizontal)
+                        }
+                    }
+                    .padding(.vertical)
                 }
             }
         }
     }
 }
-
 
 struct RoomBooking: View {
     @Environment(\.presentationMode) var presentationMode

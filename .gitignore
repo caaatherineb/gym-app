@@ -4,3 +4,5 @@
 # Xcode user data
 *.xcuserstate
 *.scuserdata
+gym-app.xcodeproj/xcuserdata/
+

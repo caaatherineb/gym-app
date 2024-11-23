@@ -164,13 +164,15 @@ struct Home: View{
                     .fill(Color.blue)
                     .frame(width: 350, height: 120)
                     .overlay(
-                        HStack{
-                            Image("carw_exterior")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipped()
-                        })
-                    .position(x:200, y:120)
+                        Image("carw_exterior")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 350, height: 120)
+                            .clipped()
+                            .cornerRadius(25)
+                            .opacity(0.6)
+                    )
+                    .position(x: 200, y: 120)
                 
 //                // Two squares in the middle
 //                ZStack{

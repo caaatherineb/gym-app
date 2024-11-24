@@ -136,8 +136,9 @@ struct ContentView: View {
 struct Home: View{
     @State public var showAnnouncement = false
     @Environment(\.presentationMode) var presentationMode
-    // FIX SO THAT IT IS LINKED TO FIRST ITEM OF ANNOUNCEMENTS
-    private let latestAnnouncement = "New Gym Hours! Now open from 5 AM to 10 PM daily."
+    private var latestAnnouncement: String{
+        Updates.announcements.first ?? "No new announcements"
+    }
     
     var body: some View {
         
@@ -392,7 +393,7 @@ struct WorkoutLog: View {
 
 
 struct Updates: View {
-    let announcements = [
+    static let announcements = [
         "New Gym Hours! Now open from 5 AM to 10 PM daily.",
         "Don't miss the Yoga Workshop this Saturday!",
         "Introducing new cycling classes starting next week.",
@@ -429,7 +430,7 @@ struct Updates: View {
                 
                 ScrollView {
                     VStack(spacing: 16) {
-                        ForEach(announcements, id: \.self) { announcement in
+                        ForEach(Updates.announcements, id: \.self) { announcement in
                             VStack {
                                 Text(announcement)
                                     .font(.title3)

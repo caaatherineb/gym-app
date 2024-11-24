@@ -151,41 +151,72 @@ struct Home: View{
                     // Rounded Rectangle
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color.blue) // Background color for the rectangle
-                        .frame(width: 350, height: 270) // Size of the rectangle
+                        .frame(width: 350, height: 250) // Size of the rectangle
                         .position(x: 200, y: 150)
                     // Text overlay
                     Text("Welcome to Home")
                         .font(.title)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                 }
-                
-                // TO DO: Change these squares to a rectangular bar that shows the gym we are at
-                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                    .fill(Color.blue)
-                    .frame(width: 350, height: 120)
-                    .overlay(
-                        HStack{
-                            Image("carw_exterior")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipped()
-                        })
-                    .position(x:200, y:120)
-                
-//                // Two squares in the middle
-//                ZStack{
-//                    RoundedRectangle(cornerRadius: 25)
-//                        .fill(Color.blue) // Background color for the rectangle
-//                        .frame(width: 120, height: 120) // Size of the rectangle
-//                        .position(x: 100, y: 190)
-//                }
-//                ZStack{
-//                    RoundedRectangle(cornerRadius: 25)
-//                        .fill(Color.blue) // Background color for the rectangle
-//                        .frame(width: 120, height: 120) // Size of the rectangle
-//                        .position(x: 300, y: 10)
-//                }
-                
+                .padding(.bottom, 80)
+
+                ZStack{
+                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        .fill(Color.blue)
+                        .frame(width: 350, height: 120)
+                        .overlay(
+                            ZStack {
+                                
+                                Image("carw_exterior")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 350, height: 150)
+                                    .clipped()
+                                    .cornerRadius(25)
+
+                                // gradient overlay for text readability
+                                LinearGradient(
+                                    gradient: Gradient(colors: [Color.black.opacity(0.5), Color.clear]),
+                                    startPoint: .bottom,
+                                    endPoint: .top
+                                )
+                                .cornerRadius(25)
+                                
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text("Center for Athletics, Recreation, and")
+                                        .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.white)
+
+                                    Text("Wellness (CARW)")
+                                        .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.white)
+
+                                    HStack {
+                                        Text("Located In:")
+                                            .font(.system(size: 14, weight: .semibold))
+                                            .foregroundColor(.white)
+
+                                        Text("Pomona College")
+                                            .font(.system(size: 14, weight: .regular))
+                                            .foregroundColor(.white.opacity(0.8))
+                                    }
+
+                                    HStack {
+                                        Text("Address:")
+                                            .font(.system(size: 14, weight: .semibold))
+                                            .foregroundColor(.white)
+
+                                        Text("212 E 6th St, Claremont, CA 91711")
+                                            .font(.system(size: 14, weight: .regular))
+                                            .foregroundColor(.white.opacity(0.8))
+                                    }
+                                }
+                                .padding()
+                                .frame(width: 330, alignment: .leading) // keeps text within card
+                            }
+                        )
+                        .position(x: 200, y: 120)
+                }
                 
                 // Announcements Snippet
                 RoundedRectangle(cornerRadius: 25)
@@ -213,7 +244,6 @@ struct Home: View{
                         showAnnouncement = true
                     }
                 
-                Spacer()
             }
             .navigationDestination(isPresented: $showAnnouncement) {
                 Updates()

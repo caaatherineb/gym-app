@@ -137,7 +137,7 @@ struct Home: View{
     @State public var showAnnouncement = false
     @Environment(\.presentationMode) var presentationMode
     private var latestAnnouncement: String{
-        Updates.announcements.first ?? "No new announcements"
+        Updates.announcements.first?.text ?? "No new announcements"
     }
     
     var body: some View {
@@ -393,19 +393,52 @@ struct WorkoutLog: View {
 
 
 struct Updates: View {
-    static let announcements = [
-        "New Gym Hours! Now open from 5 AM to 10 PM daily.",
-        "Don't miss the Yoga Workshop this Saturday!",
-        "Introducing new cycling classes starting next week.",
-        "Book a room at the CARW today!",
-        "CARW is closed Thanksgiving Day and Christmas Day"
+    struct Announcement: Hashable {
+            let text: String
+            let timestamp: Date
+    }
+
+    // database for updates
+    static let announcements: [Announcement] = [
+        Announcement(
+            text: "New Gym Hours! Now open from 5 AM to 10 PM daily.",
+            timestamp: createDate(year: 2024, month: 11, day: 24)
+        ),
+        Announcement(
+            text: "Don't miss the Yoga Workshop this Saturday!",
+            timestamp: createDate(year: 2024, month: 11, day: 10)
+        ),
+        Announcement(
+            text: "Introducing new cycling classes starting next week.",
+            timestamp: createDate(year: 2024, month: 10, day: 9)
+        ),
+        Announcement(
+            text: "Book a room at the CARW today!",
+            timestamp: createDate(year: 2024, month: 9, day: 10)
+        ),
+        Announcement(
+            text: "CARW is closed Thanksgiving Day and Christmas Day",
+            timestamp: createDate(year: 2023, month: 11, day: 18)
+        )
     ]
+    
+    // Helper function to create specific dates
+    private static func createDate(year: Int, month: Int, day: Int) -> Date {
+        let calendar = Calendar.current
+        let components = DateComponents(year: year, month: month, day: day)
+        return calendar.date(from: components) ?? Date()
+    }
     
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
-            Color.blue.edgesIgnoringSafeArea(.all)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.blue, Color.blue.opacity(0.5)]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.all)
             
             VStack {
                 // Close button
@@ -426,23 +459,32 @@ struct Updates: View {
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .bold()
-                    .padding()
+                    .padding(.bottom, 20)
                 
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(Updates.announcements, id: \.self) { announcement in
-                            VStack {
-                                Text(announcement)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(announcement.text)
                                     .font(.title3)
-                                    .foregroundColor(.primary)
-                                    .multilineTextAlignment(.center)
-                                    .padding()
+                                    .foregroundColor(.blue)
+                                    .multilineTextAlignment(.leading)
+                                    .padding(.bottom, 5)
+
+                                Text("Posted on \(announcement.timestamp)")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
                             }
+                            .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.white)
+                            )
                             .cornerRadius(12)
-                            .shadow(radius: 5)
+                            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 3)
                             .padding(.horizontal)
+                            
                         }
                     }
                     .padding(.vertical)
@@ -620,8 +662,9 @@ struct Others: View {
 
 
 #Preview {
-    ContentView()
+    //ContentView()
     //RoomBooking()
     //WorkoutLog()
     //EquipmentInfo()
+    Updates()
 }

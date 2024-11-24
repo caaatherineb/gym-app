@@ -142,31 +142,67 @@ struct Home: View{
     var body: some View {
         
         NavigationStack{
-            VStack {
+            VStack(spacing: 20) {
+                Text("p-gym")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.blue)
+                    .padding(.top, -40)
+
                 
                 // Top block
                 ZStack {
-                    // TO DO: @kshoop27 edit here to add hours, thanks!
-                    
-                    // Rounded Rectangle
                     RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.blue) // Background color for the rectangle
-                        .frame(width: 350, height: 250) // Size of the rectangle
-                        .position(x: 200, y: 150)
-                    // Text overlay
-                    Text("Welcome to Home")
-                        .font(.title)
-                        .foregroundStyle(.white)
+                        .fill(Color.blue)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                        .frame(width: 350, height: 270) // Adjusted size
+                        .overlay(
+                            VStack(alignment: .center, spacing: 15) { // Main VStack
+                                // Title
+                                Text("Facility Hours")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.white)
+
+                                // Hours Section
+                                HStack(alignment: .top, spacing: 30) {
+                                    // Days Column
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        Text("Sun")
+                                        Text("Mon")
+                                        Text("Tues")
+                                        Text("Wed")
+                                        Text("Thurs")
+                                        Text("Fri")
+                                        Text("Sat")
+                                    }.fontWeight(.semibold).foregroundStyle(.white)
+
+                                    // Hours Column
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        let weekdayTime = "6:00 AM - 11:00 PM"
+                                        let weekendTime = "9:00 AM - 9:00 PM"
+
+                                        Text(weekendTime)
+                                        Text(weekdayTime)
+                                        Text(weekdayTime)
+                                        Text(weekdayTime)
+                                        Text(weekdayTime)
+                                        Text(weekdayTime)
+                                        Text(weekendTime)
+                                    }
+                                    .foregroundStyle(.white)
+                                }
+                            }
+                            .padding()
+                        )
                 }
-                .padding(.bottom, 80)
 
                 ZStack{
                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .fill(Color.blue)
-                        .frame(width: 350, height: 120)
+                        .fill(Color.clear)
+                        .frame(width: 350, height: 150)
                         .overlay(
                             ZStack {
-                                
                                 Image("carw_exterior")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -215,39 +251,41 @@ struct Home: View{
                                 .frame(width: 330, alignment: .leading) // keeps text within card
                             }
                         )
-                        .position(x: 200, y: 120)
                 }
                 
                 // Announcements Snippet
-                RoundedRectangle(cornerRadius: 25)
-                    .fill(Color.blue.opacity(0.1)) // Background color for the snippet
-                    .frame(width: 350, height: 250)// Adjust height to fit content
-                    .overlay(
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("Latest Announcement")
-                                    .font(.headline)
+                ZStack{
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color.blue.opacity(0.1))
+                        .frame(width: 350, height: 150)
+                        .overlay(
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("Latest Announcement")
+                                        .font(.headline)
+                                        .foregroundColor(.blue)
+                                    Text(latestAnnouncement)
+                                        .font(.subheadline)
+                                        .foregroundColor(.black)
+                                        .lineLimit(2) // Limit text to 2 lines
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
                                     .foregroundColor(.blue)
-                                Text(latestAnnouncement)
-                                    .font(.subheadline)
-                                    .foregroundColor(.black)
-                                    .lineLimit(2) // Limit text to 2 lines
                             }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.blue)
-                        }
                             .padding()
-                    )
-                    .position(x:200, y:90)
-                    .onTapGesture {
-                        showAnnouncement = true
+                        )
+                        .onTapGesture {
+                            showAnnouncement = true
                     }
+                }
+                .padding(.horizontal, 20)
+                .navigationDestination(isPresented: $showAnnouncement) {
+                    Updates()
+                }
                 
             }
-            .navigationDestination(isPresented: $showAnnouncement) {
-                Updates()
-            }
+            
         }
     }
 }

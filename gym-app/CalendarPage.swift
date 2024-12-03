@@ -8,9 +8,37 @@
 import SwiftUI
 import PhotosUI
 
-struct CalendarPage: View {
+struct ShowEquipment: View {
+    @State private var showingSelectionEquipment = false
     
-    @State var selectedActivity = 1
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Button("Exercises Done/Equipment Used") {
+                showingSelectionEquipment.toggle()
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color(UIColor.systemGray6))
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 5)
+        .sheet(isPresented: $showingSelectionEquipment) {
+            SelectionEquipment()
+            
+            
+        }
+    }
+    
+}
+
+
+
+struct CalendarPage: View {
     @State var activityName: String = ""
     @State var activityDescription: String = ""
     @State var selectedItems: [PhotosPickerItem] = []
@@ -18,24 +46,22 @@ struct CalendarPage: View {
     @State var activityDate = Date()
     @State var activityTime = Date()
     @State var distance: Double = 0.0
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading) {
-                    
-                    
+                VStack(alignment: .leading, spacing: 20) {
                     ZStack(alignment: .topLeading) {
                         if activityName.isEmpty {
                             Text("Activity Name")
                                 .foregroundColor(.gray)
                                 .padding(.leading, 18)
-                                .padding(.top, 19)
+                                .padding(.top, 10)
                                 .zIndex(1)
                         }
                         
                         TextEditor(text: $activityName)
-                            .padding(.leading, 4)
+                            .padding(.leading, 3)
                             .font(.system(size: 18))
                             .autocorrectionDisabled()
                             .background(Color(UIColor.secondarySystemBackground))
@@ -46,20 +72,19 @@ struct CalendarPage: View {
                             )
                             .frame(width: 340, height: 50)
                             .padding(.horizontal, 10)
-                            .padding(.top, 10)
                     }
-                    
+
                     ZStack(alignment: .topLeading) {
                         if activityDescription.isEmpty {
                             Text("How'd it go? Tell us more about your experience")
                                 .foregroundColor(.gray)
-                                .padding(.leading, 8)
-                                .padding(.top, 12)
+                                .padding(.leading, 20)
+                                .padding(.top, 16)
                                 .zIndex(1)
                         }
                         
                         TextEditor(text: $activityDescription)
-                            .padding(.leading, 4)
+                            .padding(.leading, 3)
                             .font(.system(size: 18))
                             .autocorrectionDisabled()
                             .background(Color(UIColor.secondarySystemBackground))
@@ -69,35 +94,10 @@ struct CalendarPage: View {
                                     .stroke(Color.gray, lineWidth: 1)
                             )
                             .frame(height: 100)
+                            .padding(10)
                     }
-                    .padding(.bottom, 20)
-                    .padding(10)
                     
-                    Text("Type of Activity")
-                        .font(.headline)
-                        .padding(.bottom, 5)
-                        .bold()
-                    
-                    Picker("Type of Activity", selection: $selectedActivity) {
-                        Label(" Run", systemImage: "figure.walk").tag(1)
-                        Label(" Lift", systemImage: "dumbbell").tag(2)
-                        Label(" Cycling", systemImage: "bicycle").tag(3)
-                        Label(" Swim", systemImage: "figure.wave").tag(4)
-                        Label(" Yoga", systemImage: "leaf").tag(5)
-                        Label(" Basketball", systemImage: "sportscourt").tag(6)
-                        Label(" Soccer", systemImage: "soccerball").tag(7)
-                        Label(" Football", systemImage: "football").tag(8)
-                        Label(" Tennis", systemImage: "tennis.racket").tag(9)
-                        Label(" Baseball", systemImage: "baseball").tag(10)
-                        Label(" Golf", systemImage: "flag").tag(11)
-                        Label(" Boxing", systemImage: "figure.boxing").tag(12)
-                        Label(" Surfing", systemImage: "figure.surfing").tag(13)
-                        Label(" Skiing", systemImage: "figure.skiing.downhill").tag(14)
-                        Label(" Hiking", systemImage: "figure.hiking").tag(15)
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                    .padding(.bottom, 20)
-                    
+                    ShowEquipment()
                     
                     PhotosPicker(
                         selection: $selectedItems,
@@ -124,14 +124,10 @@ struct CalendarPage: View {
                         }
                     }
                     
-                    //Spacer()
-                    
                     Text("Stats")
                         .font(.headline)
                         .bold()
                         .padding(.bottom, 5)
-                        .padding(.top, 20)
-                    
                     
                     DatePicker(
                         "Date of Activity",
@@ -140,14 +136,12 @@ struct CalendarPage: View {
                     )
                     .padding(.vertical, 10)
                     
-                    
                     DatePicker(
                         "Time of Activity",
                         selection: $activityTime,
                         displayedComponents: .hourAndMinute
                     )
                     .padding(.vertical, 10)
-                    
                     
                     HStack {
                         Text("Distance (miles)")
@@ -159,8 +153,6 @@ struct CalendarPage: View {
                         }
                         .padding(.horizontal)
                     }
-                    .padding(.vertical, 10)
-                    
                 }
                 .padding()
                 .navigationBarTitle("Edit Activity", displayMode: .inline)
@@ -189,8 +181,8 @@ struct CalendarPage: View {
             }
         }
     }
-    
 }
+
 
 #Preview {
     CalendarPage()

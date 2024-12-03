@@ -13,7 +13,7 @@ struct EquipmentCardView: View {
     var body: some View {
         VStack {
             ZStack {
-                Image(equipment.imageName)
+                Image("chest-press")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 460)
@@ -21,7 +21,6 @@ struct EquipmentCardView: View {
             }
             .overlay(alignment: .topTrailing) {
                 Button {
-                   // ?
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.secondary)

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53DED87D2CE72D8800B77BB6 /* tempcodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DED87C2CE72D8800B77BB6 /* tempcodes.swift */; };
 		53DED8842CE7412000B77BB6 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DED8822CE7411F00B77BB6 /* Equipment.swift */; };
 		53DED8852CE7412000B77BB6 /* EquipmentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DED8832CE7412000B77BB6 /* EquipmentCardView.swift */; };
 		53DED8872CE74A2200B77BB6 /* CalendarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DED8862CE74A2200B77BB6 /* CalendarPage.swift */; };
@@ -16,10 +15,10 @@
 		53E293332C30074D002B5EF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E293322C30074D002B5EF3 /* ContentView.swift */; };
 		53E293352C30074F002B5EF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E293342C30074F002B5EF3 /* Assets.xcassets */; };
 		53E293382C30074F002B5EF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E293372C30074F002B5EF3 /* Preview Assets.xcassets */; };
+		ADD7D3842CF46BAC00FD232E /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7D3832CF46BAC00FD232E /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		53DED87C2CE72D8800B77BB6 /* tempcodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempcodes.swift; sourceTree = "<group>"; };
 		53DED8822CE7411F00B77BB6 /* Equipment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		53DED8832CE7412000B77BB6 /* EquipmentCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipmentCardView.swift; sourceTree = "<group>"; };
 		53DED8862CE74A2200B77BB6 /* CalendarPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPage.swift; sourceTree = "<group>"; };
@@ -29,6 +28,7 @@
 		53E293322C30074D002B5EF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		53E293342C30074F002B5EF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53E293372C30074F002B5EF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ADD7D3832CF46BAC00FD232E /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +65,9 @@
 				53E293322C30074D002B5EF3 /* ContentView.swift */,
 				53DED8822CE7411F00B77BB6 /* Equipment.swift */,
 				53DED8832CE7412000B77BB6 /* EquipmentCardView.swift */,
+				ADD7D3832CF46BAC00FD232E /* SwiftUIView.swift */,
 				53DED8862CE74A2200B77BB6 /* CalendarPage.swift */,
 				53DED8882CE74E4E00B77BB6 /* CalendarPageView.swift */,
-				53DED87C2CE72D8800B77BB6 /* tempcodes.swift */,
 				53E293342C30074F002B5EF3 /* Assets.xcassets */,
 				53E293362C30074F002B5EF3 /* Preview Content */,
 			);
@@ -153,9 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				53DED8892CE74E4E00B77BB6 /* CalendarPageView.swift in Sources */,
+				ADD7D3842CF46BAC00FD232E /* SwiftUIView.swift in Sources */,
 				53DED8872CE74A2200B77BB6 /* CalendarPage.swift in Sources */,
 				53E293332C30074D002B5EF3 /* ContentView.swift in Sources */,
-				53DED87D2CE72D8800B77BB6 /* tempcodes.swift in Sources */,
 				53E293312C30074D002B5EF3 /* gym_appApp.swift in Sources */,
 				53DED8842CE7412000B77BB6 /* Equipment.swift in Sources */,
 				53DED8852CE7412000B77BB6 /* EquipmentCardView.swift in Sources */,

@@ -362,7 +362,7 @@ struct WorkoutLog: View {
         CalendarPageView(activities: [
             Activity(
                 name: "Morning Run",
-                description: "A quick jog around the park to start the day.",
+                description: "Run on tredmill",
                 type: 1,
                 date: Date(),
                 time: Date(),
@@ -662,9 +662,9 @@ struct Others: View {
 
 
 #Preview {
-    //ContentView()
+    ContentView()
     //RoomBooking()
     //WorkoutLog()
     //EquipmentInfo()
-    Updates()
+    //Updates()
 }
